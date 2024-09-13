@@ -1,5 +1,4 @@
-- hosts: localhost
-  connection: local
+- hosts: all
   tasks:
         - name: Create a new token using username/password
           ansible.controller.token:
