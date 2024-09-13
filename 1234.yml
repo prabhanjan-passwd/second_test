@@ -1,0 +1,20 @@
+- hosts: localhost
+  connection: local
+  tasks:
+        - name: Create a new token using username/password
+          ansible.controller.token:
+            description: 'Temporary token for subsequent tasks'
+            scope: "write"
+            state: present
+            controller_username: admin
+            controller_password: redhat
+            controller_host: 10.74.230.13
+            validate_certs: false
+
+        - ansible.controller.job_list:
+            status: running
+            query: {"playbook": "1234.yml"}
+            controller_oauthtoken: eU5SYo3snDRZ8YVuaHJAHgyk5AB2PY
+            controller_host: 10.74.230.13
+            validate_certs: false
+          register: testing_jobs
