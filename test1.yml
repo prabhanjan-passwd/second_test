@@ -1,0 +1,9 @@
+---
+- name: Display a password variable
+  hosts: all
+  vars:
+    my_password: "SuperSecretPassword123"
+  tasks:
+    - name: Show the password
+      ansible.builtin.debug:
+        msg: "The password is {{ my_password }}"
